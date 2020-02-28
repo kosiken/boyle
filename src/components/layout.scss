@@ -1,0 +1,409 @@
+@mixin hoverm() {
+  transform: scale(1.2);
+}
+@mixin transition-all() {
+  -webkit-transition: all 0.2s linear;
+  -moz-transition: all 0.2s linear;
+  transition: all 0.2s linear;
+}
+
+$desktop: 840px;
+$primary: #fee9ff;
+$secondary: #c8abde;
+$accent: #62baac;
+$purp: #a65ee8;
+//
+$text_color_2: #7f7a7a;
+@mixin desktop {
+  @media (min-width: #{$desktop}) {
+    @content;
+  }
+}
+@mixin shadow($x, $b, $y, $blur, $color) {
+  -webkit-box-shadow: $x $b $y $blur $color;
+  -moz-box-shadow: $x $b $y $blur $color;
+  box-shadow: $x $b $y $blur $color;
+}
+
+html {
+  font-family: "Roboto", Arial, Helvetica, sans-serif;
+  -ms-text-size-adjust: 100%;
+  -webkit-text-size-adjust: 100%;
+}
+body {
+  margin: 0;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  font-family: "Roboto", Arial, Helvetica, sans-serif;
+  background-color: rgba($color: $primary, $alpha: 0.2);
+
+  position: relative;
+  width: 100vw;
+  overflow-x: hidden;
+}
+
+header {
+  padding: 40px 30px 10px;
+  // font-family: Arial, Helvetica, sans-serif;
+}
+nav {
+  text-align: right;
+}
+.primary {
+  background-color: $primary;
+}
+
+.secondary {
+  background-color: $purp;
+  color: $primary;
+
+  &-light {
+    background-color: $secondary;
+    color: $text_color_2;
+  }
+}
+
+.accent {
+  background-color: $accent;
+}
+.container {
+  width: 85%;
+  margin: 0 auto;
+}
+.quote {
+  font-size: 1.5em;
+  font-weight: bold;
+  padding: 0 1.3em;
+
+  p {
+    margin: 8px 0;
+    text-align: center;
+  }
+  strong {
+    display: inline-block;
+    text-align: left;
+    width: 100%;
+    &.right {
+      text-align: right;
+    }
+  }
+}
+#logo-text {
+  text-decoration: none;
+  color: $primary;
+
+  font-weight: 700;
+  font-size: 1.8em;
+  &.active {
+    color: $purp;
+  }
+}
+.unstyled {
+  list-style-type: none;
+  padding-inline-start: 0;
+  margin: 0;
+}
+.flex-row {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+}
+
+.haf {
+  flex: 1;
+}
+.title {
+  font-size: 1.5em;
+  font-weight: 700;
+}
+
+#header-nav li {
+  display: inline;
+  margin-left: 20px;
+  padding: 5px;
+  &:first-of-type {
+    margin-left: 0;
+  }
+}
+.white {
+  color: $primary;
+}
+.dropdown-container {
+  position: relative;
+
+  .dropdown-menu {
+    display: none;
+    position: absolute;
+    top: 25px;
+    left: 10px;
+    background-color: #fff;
+
+    width: 150%;
+    @include shadow(2px, 3px, 6px, 3px, #c4c4c470);
+    z-index: 999;
+    &::before {
+      content: " ";
+      position: absolute;
+      top: -5px;
+      left: 2px;
+      width: 15px;
+      height: 15px;
+      transform: rotate(30deg);
+      background-color: white;
+      //  @include shadow(2px, 3px, 6px, 3px, #c4c4c470);
+    }
+  }
+  &:hover {
+    .dropdown-menu {
+      display: block;
+    }
+  }
+}
+strong {
+}
+
+hr {
+  border-color: transparent;
+}
+.link-text {
+  text-decoration: none;
+  color: $text_color_2;
+  cursor: pointer;
+  transition: all 0.2s linear;
+  &:hover {
+    color: $accent;
+    font-weight: 500;
+  }
+}
+.active {
+  color: darken($accent, 25%);
+}
+
+// --- hoome
+
+#tint {
+  animation: 0.5s 0s slide;
+  position: absolute;
+  height: 100vh;
+  width: 50vw;
+  top: 0;
+  left: 0;
+  z-index: -2;
+}
+.container-small {
+  //border: 6px solid rgba($secondary, 1);
+  height: 70vh;
+  // width: 80%;
+  display: flex;
+  align-items: center;
+  padding: 0 30px;
+  margin: 5vh auto 0;
+  .haf {
+    padding: 0 20px;
+  }
+}
+.slides {
+  animation: 0.5s 0s slide;
+}
+#profile-img-holder {
+  // width: 55%;
+
+  width: 60%;
+  margin: 0 30px 0 auto;
+}
+.grey {
+  color: $text_color_2;
+}
+.h80 {
+  height: 90vh;
+}
+.large-text {
+  font-size: 2.5em;
+  line-height: 1.3;
+  font-weight: 700;
+}
+
+@keyframes slide {
+  from {
+    margin-left: -70vw;
+  }
+  to {
+    margin-left: 0;
+  }
+}
+
+.masonry {
+  margin-top: 20vh;
+}
+.underline {
+  border-bottom: 4px solid $text_color_2;
+  h3 {
+    margin: 0;
+  }
+  padding: 0 20px 5px 0;
+  display: inline-block;
+  margin-bottom: 15px;
+}
+
+.list-group {
+  text-align: left;
+  .list-group-item {
+    padding: 10px 1.1em 10px 1em;
+    cursor: pointer;
+  }
+}
+.masonry {
+  margin: 20vh 0 10vh;
+}
+.grids {
+  display: grid;
+  grid-template-columns: auto auto auto;
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: 30% auto;
+}
+.card {
+  // padding: 1.5em;
+  position: relative;
+  margin: 0.5em;
+  overflow: hidden;
+
+  .img {
+    width: 80%;
+    height: 350px;
+
+    margin-left: 0;
+    img {
+      width: 100%;
+      height: 100%;
+    }
+  }
+  .title {
+    margin: 2px 0 2px;
+  }
+}
+
+.section {
+  margin: 15px 0;
+  padding: 10px 15px;
+  .title {
+    color: darken($color: $accent, $amount: 20%);
+  }
+}
+
+.btn-div {
+  margin: 1.5em 0 0;
+}
+.btn {
+  color: $primary;
+  text-decoration: none;
+  padding: 0.5em 0.8em;
+  border-radius: 2px;
+  background-color: $accent;
+  &:hover {
+    background-color: darken($color: $accent, $amount: 20%);
+    @include shadow(2px, 3px, 6px, 3px, #c4c4c470);
+  }
+}
+.footer {
+  padding: 1.5em;
+  text-align: center;
+  color: $purp;
+  width: 100%;
+}
+
+.fixed {
+  position: fixed;
+}
+
+.bl {
+  bottom: 0;
+  left: 0;
+}
+
+.p20 {
+  padding: 1.5em;
+}
+
+.br {
+  border-left: 0.5px solid $primary;
+  margin: 0 0 0 1em;
+}
+.link-btn {
+  background: none;
+
+  border: none;
+
+  margin: 0 1em 0 0;
+
+  cursor: pointer;
+  &.active {
+    font-weight: bold;
+  }
+
+  &:last-child {
+    margin: 0;
+  }
+
+  &:hover {
+    color: $accent;
+  }
+}
+#book-image {
+  height: 65vh;
+  width: 90%;
+}
+.meta {
+  display: inline-block;
+  margin-right: 10px;
+  margin-bottom: 5px;
+  background-color: $secondary;
+  padding: 5px 7.5px;
+  border-radius: 2px;
+  font-size: 0.8em;
+  color: #fff;
+  font-weight: bold;
+  &:last-child {
+    //  margin-right: 0;
+    margin: 0;
+  }
+}
+.meta-data-div {
+  margin-top: 0.8em;
+  // width: 80%;
+}
+.story {
+  padding: 0 1.3em;
+  p {
+    line-height: 1.5em;
+    font-size: 1.2em;
+  }
+}
+.text-center {
+  text-align: center;
+}
+.book {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  text-decoration: none;
+
+  &:hover {
+    // background-color: darken($color: $accent, $amount: 20%);
+    .book-thumb {
+      @include shadow(2px, 3px, 6px, 3px, #c4c4c470);
+      transform: translateY(-3px);
+    }
+  }
+}
+.book-thumb {
+  width: 60%;
+  transition: all 0.2s ease-in;
+}
+.book-name {
+  width: 80%;
+  text-align: center;
+}
